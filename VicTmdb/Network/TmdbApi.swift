@@ -8,19 +8,21 @@
 
 import Foundation
 import Moya
+import RxSwift
+import RxCocoa
 
 // MARK: Globals
-var showActivity = false
+var showActivity = BehaviorRelay<Bool>(value: false)
 let TMDBprovider = MoyaProvider<TMDB>(
     plugins: [
         NetworkLoggerPlugin(verbose: true),
         NetworkActivityPlugin(networkActivityClosure: { changeType, targetType in
             switch changeType {
             case .began:
-                showActivity = true
+                showActivity.accept(true)
                 break
             case .ended:
-                showActivity = false
+                showActivity.accept(false)
                 break
             }
         })

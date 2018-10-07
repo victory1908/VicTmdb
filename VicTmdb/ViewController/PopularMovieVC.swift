@@ -12,16 +12,16 @@ import RxSwift
 class PopularMovieVC: UIViewController {
 
     // Public
-    var viewModel: PopularMovieViewModel = PopularMovieViewModel(service: PhotoService())
+    var viewModel: PopularMovieViewModel = PopularMovieViewModel(service: PhotoService.shared)
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.keyboardDismissMode = .onDrag
             
-            let flowLayout = UICollectionViewFlowLayout()
-            let width = (collectionView.frame.size.width - CGFloat(100)) / CGFloat(1)
-            let height = (collectionView.frame.size.height - CGFloat(50)) / CGFloat(1)
-            flowLayout.itemSize = CGSize(width: width, height: height)
-            collectionView.setCollectionViewLayout(flowLayout, animated: true)
+//            let flowLayout = UICollectionViewFlowLayout()
+//            let width = (collectionView.frame.size.width - CGFloat(100)) / CGFloat(1)
+//            let height = (collectionView.frame.size.height - CGFloat(50)) / CGFloat(1)
+//            flowLayout.itemSize = CGSize(width: width, height: height)
+//            collectionView.setCollectionViewLayout(flowLayout, animated: true)
             
         }
     }

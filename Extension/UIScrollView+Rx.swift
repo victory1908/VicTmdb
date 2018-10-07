@@ -1,10 +1,4 @@
-//
-//  UIScrollView+Rx.swift
-//  eigami
-//
-//  Created by Aarif Sumra on 2018/03/10.
-//  Copyright © 2018 Aarif Sumra. All rights reserved.
-//
+
 
 import UIKit.UIScrollView
 import RxSwift

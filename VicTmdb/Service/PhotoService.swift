@@ -12,10 +12,8 @@ import RxSwift
 //import RxMoya
 
 struct PhotoService {
-    let provider = MoyaProvider<TMDB>()
-//    init(provider: MoyaProvider<TMDB>) {
-//        self.provider = provider
-//    }
+    static let shared = PhotoService()
+    let provider = TMDBprovider
     
     func searchMovie(query: String, page: Int) -> Single<[Movie]> {
         return provider.rx

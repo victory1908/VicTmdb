@@ -1,10 +1,3 @@
-//
-//  RxDataSources+Sectioned.swift
-//  shibi
-//
-//  Created by Aarif Sumra on 2018/03/10.
-//  Copyright © 2018 Aarif Sumra. All rights reserved.
-//
 
 import RxDataSources
 
