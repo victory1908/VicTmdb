@@ -7,7 +7,10 @@ target 'VicTmdb' do
 
   # Pods for VicTmdb
 	pod 'Moya'
+	pod 'Moya/RxSwift'
 	pod 'RxSwift'
+	pod 'RxCocoa'
+	pod 'RxDataSources'
 	pod 'Kingfisher'
 
   target 'VicTmdbTests' do

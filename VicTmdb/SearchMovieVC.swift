@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  VicTmdb
 //
 //  Created by victory1908 on 7/10/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class SearchMovieVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
