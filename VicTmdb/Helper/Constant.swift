@@ -18,4 +18,5 @@ struct Constant {
     static let photoCellidentifier = "photoCell"
     static let popularVCidentifier = "PopularMovieVC"
     static var searchMovieVCidentifier = "searchMovieVC"
+    static var searchCell = "searchCell"
 }

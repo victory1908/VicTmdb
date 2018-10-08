@@ -79,7 +79,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="collectionView" destination="DQV-zX-A90" id="8PX-sB-uaK"/>
                     </connections>
@@ -184,11 +184,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Second-->
+        <!--Navigation Controller-->
         <scene sceneID="mzf-Qk-bbe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ewY-U6-zyf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jHs-km-5iY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -204,8 +204,4 @@
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
-    </resources>
 </document>

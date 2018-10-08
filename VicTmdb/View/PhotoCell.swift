@@ -29,12 +29,20 @@ class PhotoCell: UICollectionViewCell {
         if let path = item.posterPath, let posterUrl = URL(string: Constant.imageUrlString + path) {
             posterImageView.kf.indicatorType = .activity
             
-            posterImageView.kf.setImage(with: posterUrl, placeholder: UIImage(named: "Movie"), completionHandler: {
-                (image, error, cacheType, imageUrl) in
-                if image == nil {
-                    self.posterImageView.image = UIImage(named: "Movie")
-                }
-            })
+//            posterImageView.kf.setImage(with: posterUrl, options [.backgroundDecode], placeholder: UIImage(named: "Movie"), completionHandler: {
+//                (image, error, cacheType, imageUrl) in
+//                if image == nil {
+//                    self.posterImageView.image = UIImage(named: "Movie")
+//                }
+//            })
+            
+            posterImageView.kf.setImage(with: posterUrl, options: [.backgroundDecode])
+            
+//            posterImageView.kf.setImage(with: posterUrl, placeholder: UIImage(named: "Movie", options: [.backgroundDecode], progressBlock: nil, completionHandler: { (image, error, cacheType, imageUrl) in
+//                if image == nil {
+//                    self.posterImageView.image = UIImage(named: "Movie")
+//                }
+//            })
         }
     }
     

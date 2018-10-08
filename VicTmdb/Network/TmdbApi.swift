@@ -15,7 +15,7 @@ import RxCocoa
 var showActivity = BehaviorRelay<Bool>(value: false)
 let TMDBprovider = MoyaProvider<TMDB>(
     plugins: [
-        NetworkLoggerPlugin(verbose: true),
+//        NetworkLoggerPlugin(verbose: true),
         NetworkActivityPlugin(networkActivityClosure: { changeType, targetType in
             switch changeType {
             case .began:

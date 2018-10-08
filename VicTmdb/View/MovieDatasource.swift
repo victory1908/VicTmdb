@@ -19,6 +19,17 @@ class MovieDatasource: RxCollectionViewSectionedReloadDataSource<Group<Movie>> {
     }
 }
 
+class SearchDatasource: RxTableViewSectionedReloadDataSource<Group<String>> {
+    convenience init() {
+        self.init(
+            configureCell: { (ds, tv, ip, item) -> UITableViewCell  in
+                let cell = tv.dequeueReusableCell(withIdentifier: Constant.searchCell, for: ip)
+                cell.textLabel?.text = item
+                return cell
+        })
+    }
+}
+
 //extension MovieDatasource {
 //    
 //    func collectionView(_ collectionView: UICollectionView,

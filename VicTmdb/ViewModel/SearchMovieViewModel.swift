@@ -19,7 +19,7 @@ class SearchMovieViewModel {
     // Outputs
     let results: Driver<[Movie]>
     let currentPage: Driver<Int>
-//    let noResult: Driver<Void>
+    var seachHistory: Driver<[String]>
     
     // Private
     private let query: BehaviorRelay<String>
@@ -27,6 +27,7 @@ class SearchMovieViewModel {
     private let totalPages: BehaviorRelay<Int>
     private let movies: BehaviorRelay<[Movie]>
     private let service: PhotoService
+    private let history: BehaviorRelay<[String]>
     
     let test = BehaviorRelay<String>(value: "test")
     
@@ -49,8 +50,14 @@ class SearchMovieViewModel {
         let movies = BehaviorRelay<[Movie]>(value: [])
         self.movies = movies
         
+        let history = BehaviorRelay<[String]>(value: UserDefaults.fetch())
+        self.history = history
+        self.seachHistory = history.asDriver(onErrorJustReturn: UserDefaults.fetch())
+        
         let keyword = search.asDriver(onErrorJustReturn: "")
+            .filter{!$0.isEmpty}
             .do(onNext: {
+                print("keyword \($0)")
                 query.accept($0)
                 pageNo.accept(0)
             })
@@ -72,6 +79,10 @@ class SearchMovieViewModel {
                 service.searchMovie(query: query.value, page: pageNo.value + 1).asDriver(onErrorJustReturn: [])}
             .do(onNext: {
                 print($0.count)
+                
+                if $0.count != 0 {
+                    history.accept(UserDefaults.add(text: query.value))
+                }
                 
                 if pageNo.value == 0 {
                     movies.accept($0)

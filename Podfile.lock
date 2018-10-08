@@ -17,6 +17,9 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
+  - RxKeyboard (0.9.0):
+    - RxCocoa (>= 4.3.1)
+    - RxSwift (>= 4.3.1)
   - RxSwift (4.3.1)
 
 DEPENDENCIES:
@@ -25,6 +28,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - RxCocoa
   - RxDataSources
+  - RxKeyboard
   - RxSwift
 
 SPEC REPOS:
@@ -36,6 +40,7 @@ SPEC REPOS:
     - Result
     - RxCocoa
     - RxDataSources
+    - RxKeyboard
     - RxSwift
 
 SPEC CHECKSUMS:
@@ -46,8 +51,9 @@ SPEC CHECKSUMS:
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
 
-PODFILE CHECKSUM: ac2475681960abdd9f255b99b59c8bc8f11d62d8
+PODFILE CHECKSUM: fc88d4b1d717cb7c4c7622fe03d5c2ada9293dae
 
 COCOAPODS: 1.5.3

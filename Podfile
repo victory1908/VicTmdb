@@ -12,6 +12,7 @@ target 'VicTmdb' do
 	pod 'RxCocoa'
 	pod 'RxDataSources'
 	pod 'Kingfisher'
+    pod 'RxKeyboard'
 
   target 'VicTmdbTests' do
     inherit! :search_paths

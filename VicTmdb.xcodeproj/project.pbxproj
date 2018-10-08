@@ -28,6 +28,7 @@
 		A0D1EF23216A6CAE0049227A /* RxDataSources+Sectioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF20216A6CAE0049227A /* RxDataSources+Sectioned.swift */; };
 		A0D1EF25216A6CAE0049227A /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */; };
 		A0D1EF27216A847E0049227A /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF26216A847E0049227A /* SearchMovieViewModel.swift */; };
+		A0D1EF2B216AF7B40049227A /* Userdefaults+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */; };
 		F5583D2ED169D2ADFB59FF9A /* Pods_VicTmdbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C841BBE2950ECE8F25D4C3E /* Pods_VicTmdbTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		A0D1EF20216A6CAE0049227A /* RxDataSources+Sectioned.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxDataSources+Sectioned.swift"; sourceTree = "<group>"; };
 		A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		A0D1EF26216A847E0049227A /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
+		A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefaults+History.swift"; sourceTree = "<group>"; };
 		A6C865E80E949644F764B8AB /* Pods-VicTmdbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0DBAEC880184EC40537621 /* Pods-VicTmdbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				A0D1EF20216A6CAE0049227A /* RxDataSources+Sectioned.swift */,
 				A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */,
+				A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -425,6 +429,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +519,7 @@
 				A0D1EF0D216A5A1B0049227A /* TmdbApi.swift in Sources */,
 				A0D1EF1E216A6B760049227A /* MovieDatasource.swift in Sources */,
 				A0D1EED9216A55F20049227A /* AppDelegate.swift in Sources */,
+				A0D1EF2B216AF7B40049227A /* Userdefaults+History.swift in Sources */,
 				A0D1EF27216A847E0049227A /* SearchMovieViewModel.swift in Sources */,
 				A0D1EF1B216A68D80049227A /* PhotoCell.swift in Sources */,
 				A0D1EF12216A5AB10049227A /* ApiResonse.swift in Sources */,
