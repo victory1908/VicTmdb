@@ -38,8 +38,6 @@ struct Movie: Codable {
         case overview
     }
     
-    
-    
 }
 
 extension Movie: Equatable {

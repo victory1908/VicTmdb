@@ -12,37 +12,54 @@ import RxSwift
 class PopularMovieVC: UIViewController {
 
     // Public
-    var viewModel: PopularMovieViewModel = PopularMovieViewModel(service: PhotoService.shared)
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            collectionView.keyboardDismissMode = .onDrag
-            
-//            let flowLayout = UICollectionViewFlowLayout()
-//            let width = (collectionView.frame.size.width - CGFloat(100)) / CGFloat(1)
-//            let height = (collectionView.frame.size.height - CGFloat(50)) / CGFloat(1)
-//            flowLayout.itemSize = CGSize(width: width, height: height)
-//            collectionView.setCollectionViewLayout(flowLayout, animated: true)
-            
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // Private
+    var viewModel: PopularMovieViewModel = PopularMovieViewModel(service: PhotoService.shared)
     private let disposeBag = DisposeBag()
     private weak var refreshControl: UIRefreshControl!
-    private weak var noResultsLabel: UILabel!
     private let dataSource = MovieDatasource()
+    
+    private let flowLayoutNew = FlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if #available(iOS 11.0, *) {
+//            navigationController?.navigationBar.prefersLargeTitles = true
+//        }
+        
+        setupCollectionView()
         setupRefreshControl()
-        setupNoResults()
         bindRx()
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        DispatchQueue.main.async {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
 }
 
 // MARK:- Layout Configuration
 extension PopularMovieVC {
+    
+    func setupCollectionView() {
+        
+        
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .always
+        } else {
+            // Fallback on earlier versions
+            automaticallyAdjustsScrollViewInsets = true
+        }
+        
+        collectionView.collectionViewLayout = flowLayoutNew
+        collectionView.keyboardDismissMode = .onDrag
+        
+    }
     
     func setupRefreshControl() {
         let rc = UIRefreshControl()
@@ -56,18 +73,9 @@ extension PopularMovieVC {
         }
         refreshControl = rc
     }
-    
-    func setupNoResults() {
-        let label = UILabel()
-        label.text = "No Movies Found!"
-        label.sizeToFit()
-        label.isHidden = true
-        collectionView.backgroundView = label
-        noResultsLabel = label
-    }
 }
 
-fileprivate extension PopularMovieVC {
+extension PopularMovieVC {
     func bindRx() {
         collectionView.rx.reachedBottom
             .bind(to:viewModel.loadMore)
@@ -82,16 +90,6 @@ fileprivate extension PopularMovieVC {
             })
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-    }
-}
-
-extension UIStoryboard {
-    var popularMovieListViewController: PopularMovieVC {
-        guard let vc = self.instantiateViewController(withIdentifier: Constant.popularVCidentifier) as? PopularMovieVC else {
-            fatalError("PopularMovieVC couldn't be found in Storyboard file")
-        }
-        return vc
     }
 }
 

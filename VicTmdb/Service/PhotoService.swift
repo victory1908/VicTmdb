@@ -19,16 +19,6 @@ struct PhotoService {
         return provider.rx
             .request(.searchMovie(query: query, page: page + 1))
             .retry(3)
-//            .do(onSuccess: { resp in
-//                if page.value > 0 { return }
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let data = try decoder.decode(ApiResponse.self, from: resp.data)
-//                    totalPages.value = data.totalPages
-//                } catch {
-//                    print(error.localizedDescription)
-//                }
-//            })
             .map([Movie].self, atKeyPath: "results")
     }
     

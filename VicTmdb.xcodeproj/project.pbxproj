@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00260403B21E8A5EFB651036 /* Pods_VicTmdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */; };
 		41F17AD2DD6A57E36CA21BB5 /* Pods_VicTmdbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159C669104C1B4403F7916EF /* Pods_VicTmdbUITests.framework */; };
+		A03597FA216DD88F0057715A /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03597F9216DD88F0057715A /* FlowLayout.swift */; };
 		A0D1EED9216A55F20049227A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EED8216A55F20049227A /* AppDelegate.swift */; };
 		A0D1EEDB216A55F20049227A /* PopularMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EEDA216A55F20049227A /* PopularMovieVC.swift */; };
 		A0D1EEDD216A55F20049227A /* SearchMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EEDC216A55F20049227A /* SearchMovieVC.swift */; };
@@ -29,6 +30,8 @@
 		A0D1EF25216A6CAE0049227A /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */; };
 		A0D1EF27216A847E0049227A /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF26216A847E0049227A /* SearchMovieViewModel.swift */; };
 		A0D1EF2B216AF7B40049227A /* Userdefaults+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */; };
+		A0D1EF2D216B75C40049227A /* KeyedCodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF2C216B75C40049227A /* KeyedCodingContainer.swift */; };
+		A0D1EF2F216B92440049227A /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF2E216B92440049227A /* ColumnFlowLayout.swift */; };
 		F5583D2ED169D2ADFB59FF9A /* Pods_VicTmdbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C841BBE2950ECE8F25D4C3E /* Pods_VicTmdbTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,7 @@
 		3F15DCD08B4467B334320647 /* Pods-VicTmdb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb.debug.xcconfig"; sourceTree = "<group>"; };
 		5D046881DE017820C4845045 /* Pods-VicTmdb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb.release.xcconfig"; sourceTree = "<group>"; };
 		8C94E4DF94022233DFF142C0 /* Pods-VicTmdbTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A03597F9216DD88F0057715A /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		A0D1EED5216A55F20049227A /* VicTmdb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VicTmdb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D1EED8216A55F20049227A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D1EEDA216A55F20049227A /* PopularMovieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieVC.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		A0D1EF26216A847E0049227A /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
 		A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Userdefaults+History.swift"; sourceTree = "<group>"; };
+		A0D1EF2C216B75C40049227A /* KeyedCodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedCodingContainer.swift; sourceTree = "<group>"; };
+		A0D1EF2E216B92440049227A /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		A6C865E80E949644F764B8AB /* Pods-VicTmdbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0DBAEC880184EC40537621 /* Pods-VicTmdbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,7 +147,6 @@
 		A0D1EECC216A55F20049227A = {
 			isa = PBXGroup;
 			children = (
-				A0D1EF1F216A6C9B0049227A /* Extension */,
 				A0D1EED7216A55F20049227A /* VicTmdb */,
 				A0D1EEEE216A55F40049227A /* VicTmdbTests */,
 				A0D1EEF9216A55F50049227A /* VicTmdbUITests */,
@@ -164,13 +169,14 @@
 		A0D1EED7216A55F20049227A /* VicTmdb */ = {
 			isa = PBXGroup;
 			children = (
-				A0D1EF1C216A6A720049227A /* ViewController */,
-				A0D1EF19216A68A00049227A /* View */,
-				A0D1EF16216A61F80049227A /* ViewModel */,
-				A0D1EF13216A5C000049227A /* Service */,
+				A0D1EF08216A58AF0049227A /* Helper */,
+				A0D1EF1F216A6C9B0049227A /* Extension */,
 				A0D1EF0E216A5A710049227A /* Model */,
 				A0D1EF0B216A5A020049227A /* Network */,
-				A0D1EF08216A58AF0049227A /* Helper */,
+				A0D1EF13216A5C000049227A /* Service */,
+				A0D1EF16216A61F80049227A /* ViewModel */,
+				A0D1EF19216A68A00049227A /* View */,
+				A0D1EF1C216A6A720049227A /* ViewController */,
 				A0D1EED8216A55F20049227A /* AppDelegate.swift */,
 				A0D1EEDE216A55F20049227A /* Main.storyboard */,
 				A0D1EEE1216A55F40049227A /* Assets.xcassets */,
@@ -245,6 +251,8 @@
 			children = (
 				A0D1EF1A216A68D80049227A /* PhotoCell.swift */,
 				A0D1EF1D216A6B760049227A /* MovieDatasource.swift */,
+				A0D1EF2E216B92440049227A /* ColumnFlowLayout.swift */,
+				A03597F9216DD88F0057715A /* FlowLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,8 +260,8 @@
 		A0D1EF1C216A6A720049227A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A0D1EEDC216A55F20049227A /* SearchMovieVC.swift */,
 				A0D1EEDA216A55F20049227A /* PopularMovieVC.swift */,
+				A0D1EEDC216A55F20049227A /* SearchMovieVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				A0D1EF20216A6CAE0049227A /* RxDataSources+Sectioned.swift */,
 				A0D1EF22216A6CAE0049227A /* UIScrollView+Rx.swift */,
 				A0D1EF2A216AF7B40049227A /* Userdefaults+History.swift */,
+				A0D1EF2C216B75C40049227A /* KeyedCodingContainer.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -515,6 +524,7 @@
 				A0D1EF23216A6CAE0049227A /* RxDataSources+Sectioned.swift in Sources */,
 				A0D1EF15216A5C140049227A /* PhotoService.swift in Sources */,
 				A0D1EF10216A5A810049227A /* Photo.swift in Sources */,
+				A0D1EF2F216B92440049227A /* ColumnFlowLayout.swift in Sources */,
 				A0D1EEDD216A55F20049227A /* SearchMovieVC.swift in Sources */,
 				A0D1EF0D216A5A1B0049227A /* TmdbApi.swift in Sources */,
 				A0D1EF1E216A6B760049227A /* MovieDatasource.swift in Sources */,
@@ -522,8 +532,10 @@
 				A0D1EF2B216AF7B40049227A /* Userdefaults+History.swift in Sources */,
 				A0D1EF27216A847E0049227A /* SearchMovieViewModel.swift in Sources */,
 				A0D1EF1B216A68D80049227A /* PhotoCell.swift in Sources */,
+				A03597FA216DD88F0057715A /* FlowLayout.swift in Sources */,
 				A0D1EF12216A5AB10049227A /* ApiResonse.swift in Sources */,
 				A0D1EEDB216A55F20049227A /* PopularMovieVC.swift in Sources */,
+				A0D1EF2D216B75C40049227A /* KeyedCodingContainer.swift in Sources */,
 				A0D1EF0A216A58D90049227A /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

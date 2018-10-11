@@ -6,13 +6,13 @@ target 'VicTmdb' do
   use_frameworks!
 
   # Pods for VicTmdb
-	pod 'Moya'
+	#pod 'Moya'
 	pod 'Moya/RxSwift'
 	pod 'RxSwift'
 	pod 'RxCocoa'
 	pod 'RxDataSources'
 	pod 'Kingfisher'
-    pod 'RxKeyboard'
+        pod 'RxKeyboard'
 
   target 'VicTmdbTests' do
     inherit! :search_paths

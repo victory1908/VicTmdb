@@ -34,7 +34,6 @@ class SearchMovieViewModel {
     init(service: PhotoService) {
         self.service = service
         
-        
         let query = BehaviorRelay<String>(value: "")
         self.query = query
         
@@ -95,16 +94,3 @@ class SearchMovieViewModel {
     }
     
 }
-
-//fileprivate extension SearchMovieViewModel {
-//    
-//    struct ListAPIResponse: Codable {
-//        let totalPages: Int
-//        let results: [Movie]
-//        
-//        enum CodingKeys : String, CodingKey {
-//            case totalPages = "total_pages"
-//            case results
-//        }
-//    }
-//}
