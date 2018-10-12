@@ -13,7 +13,7 @@
         <!--PopularMovieVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" userLabel="PopularMovieVC" customClass="PopularMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popularMovieVC" id="9pv-A4-QxB" userLabel="PopularMovieVC" customClass="PopularMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="photoCell" id="D1n-RU-VAl" customClass="PhotoCell" customModule="VicTmdb" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="movieCell" id="D1n-RU-VAl" customClass="MovieCell" customModule="VicTmdb" customModuleProvider="target">
                                         <rect key="frame" x="20.5" y="0.0" width="334" height="529"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -139,7 +139,7 @@
         <!--SearchMovieVC-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Search" id="8rJ-Kc-sve" userLabel="SearchMovieVC" customClass="SearchMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchMovieVC" title="Search" id="8rJ-Kc-sve" userLabel="SearchMovieVC" customClass="SearchMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Dde-Uv-HKb" customClass="PhotoCell" customModule="VicTmdb" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="Dde-Uv-HKb" customClass="MovieCell" customModule="VicTmdb" customModuleProvider="target">
                                         <rect key="frame" x="12.5" y="0.0" width="350" height="560"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

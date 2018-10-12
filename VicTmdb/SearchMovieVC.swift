@@ -13,62 +13,34 @@ import RxKeyboard
 
 class SearchMovieVC: UIViewController,UITableViewDelegate  {
     
-    // Private
+    // MARK: Private
     @IBOutlet weak var collectionView: UICollectionView!
 
     private let disposeBag = DisposeBag()
     private var searchController: UISearchController!
-    private weak var refreshControl: UIRefreshControl!
     private var activityView: UIActivityIndicatorView!
     private var searchHistoryTV: UITableView!
     private let movieDataSource = MovieDatasource()
     private let searchDataSource = SearchDatasource()
     private let flowLayoutNew = FlowLayout()
-
-
-    lazy var scheduler: SchedulerType! = MainScheduler.instance
-
+    private lazy var scheduler: SchedulerType! = MainScheduler.instance
     
-    // Public
-    var viewModel = SearchMovieViewModel(service: PhotoService.shared)
-    var searchBar: UISearchBar { return searchController.searchBar }
+    // Mark: Public
+    var viewModel: SearchMovieViewModel!
+    private var searchBar: UISearchBar { return searchController.searchBar }
     
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if #available(iOS 11.0, *) {
-//            navigationItem.largeTitleDisplayMode = .never
-//        }
-//        self.navigationItem.title = "RxMovie123"
-        
         setupCollectionView()
         setupSearchController()
-//        setupRefreshControl()
         setupActivityIndicator()
         setUpSearchHistory()
         bindRx()
     }
     
-    override func viewDidLayoutSubviews() {
-//        searchController.searchBar.showsCancelButton = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-//        searchBar.becomeFirstResponder()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-//        DispatchQueue.main.async {
-//            self.collectionView.collectionViewLayout.invalidateLayout()
-//        }
-    }
-    
 }
-
-
 
 // MARK:- Layout Configuration
 
@@ -97,21 +69,6 @@ fileprivate extension SearchMovieVC {
         self.definesPresentationContext = true
     }
     
-
-    
-//    func setupRefreshControl() {
-//        let rc = UIRefreshControl()
-//        rc.backgroundColor = .clear
-//        rc.tintColor = .lightGray
-//        if #available(iOS 10.0, *) {
-//            collectionView.refreshControl = rc
-//        } else {
-//            // Fallback on earlier versions
-//            collectionView.addSubview(rc)
-//        }
-//        refreshControl = rc
-//    }
-    
     func setupActivityIndicator() {
         activityView = UIActivityIndicatorView(style: .whiteLarge)
         activityView.color = UIColor.blue
@@ -138,6 +95,7 @@ extension SearchMovieVC {
         
         collectionView.rx.reachedBottom
             .debounce(0.1, scheduler: scheduler)
+            .throttle(0.1, scheduler: scheduler)
             .bind(to:viewModel.loadMore)
             .disposed(by: disposeBag)
         let movies = viewModel.results.asObservable().share()
@@ -151,12 +109,10 @@ extension SearchMovieVC {
             .filter{$0.count == 0}
             .debounce(0.3, scheduler: scheduler)
             .subscribe({_ in
-                print("get here?")
                 let alert = UIAlertController(title: "OOPs", message: "No film found. Please try another name", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
-
-                self.present(alert, animated: true, completion: nil)
+                alert.show()
             })
             .disposed(by: disposeBag)
         
@@ -178,46 +134,17 @@ extension SearchMovieVC {
             self.searchHistoryTV.isHidden = true
         }).disposed(by: disposeBag)
         
-        
         let historyClick = searchHistoryTV.rx.modelSelected(String.self).map{$0}.do(onNext: {
-            print("history click at \($0)")
             self.searchBar.text = $0
             self.searchHistoryTV.isHidden = true
             self.searchBar.resignFirstResponder()
         })
         
-
-//        let eventSwitch = BehaviorSubject(value: Observable
-//            .of(searchClick,historyClick)
-//            .merge()
-//            .debounce(0.3, scheduler: scheduler)
-//        )
-//        let events = eventSwitch.switchLatest()
-
-
-//        let test = Observable.of(searchClick,historyClick).merge().debounce(0.3, scheduler: scheduler).share()
-//        let eventSwitch = BehaviorSubject(value: test)
-//        let events = eventSwitch.switchLatest()
-//        events.bind(to: viewModel.search)
-//            .disposed(by: disposeBag)
-        
-//        searchBar.rx.cancelButtonClicked.subscribe({_ in
-////            eventSwitch.onNext(Observable.empty())
-//             eventSwitch.onNext(test)
-//        }).disposed(by: disposeBag)
-        
-//        let eventSwitch = BehaviorSubject.create(test)
-        
-//        events
         Observable.of(searchClick,historyClick).merge().debounce(0.3, scheduler: scheduler)
-//                    .takeUntil(searchBar.rx.cancelButtonClicked)
-//                    .takeWhile(searchBar.isFirstResponder)
-                    .bind(to: viewModel.search)
-                    .disposed(by: disposeBag)
-//
-////        searchBar.rx.cancelButtonClicked.subscribe({_ in
-////            eventSwitch.onNext(test)
-////        })
+            .withLatestFrom(viewModel.isLoading.filter{!$0}, resultSelector: {query, _ in return query })
+            .filter{!$0.isEmpty}
+            .bind(to: viewModel.search)
+            .disposed(by: disposeBag)
         
         showActivity.asDriver(onErrorJustReturn: false)
                     .drive(activityView.rx.isAnimating)

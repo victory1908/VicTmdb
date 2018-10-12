@@ -20,18 +20,20 @@ class SearchMovieViewModel {
     let results: Driver<[Movie]>
     let currentPage: Driver<Int>
     var seachHistory: Driver<[String]>
+    var isLoading: Driver<Bool>
     
     // Private
     private let query: BehaviorRelay<String>
     private let pageNo: BehaviorRelay<Int>
     private let totalPages: BehaviorRelay<Int>
     private let movies: BehaviorRelay<[Movie]>
-    private let service: PhotoService
+    private let service: MovieService
     private let history: BehaviorRelay<[String]>
+    private let isLoadingRelay: BehaviorRelay<Bool>
     
     let test = BehaviorRelay<String>(value: "test")
     
-    init(service: PhotoService) {
+    init(service: MovieService) {
         self.service = service
         
         let query = BehaviorRelay<String>(value: "")
@@ -53,10 +55,13 @@ class SearchMovieViewModel {
         self.history = history
         self.seachHistory = history.asDriver(onErrorJustReturn: UserDefaults.fetch())
         
+        let isLoadingRelay = BehaviorRelay<Bool>(value: false)
+        self.isLoadingRelay = isLoadingRelay
+        self.isLoading = isLoadingRelay.asDriver()
+        
         let keyword = search.asDriver(onErrorJustReturn: "")
             .filter{!$0.isEmpty}
             .do(onNext: {
-                print("keyword \($0)")
                 query.accept($0)
                 pageNo.accept(0)
             })
@@ -74,21 +79,27 @@ class SearchMovieViewModel {
             .asDriver(onErrorDriveWith: Driver.empty())
         
         results = request
+            .do(onNext:{
+                isLoadingRelay.accept(true)
+            })
             .flatMap { _ in return
-                service.searchMovie(query: query.value, page: pageNo.value + 1).asDriver(onErrorJustReturn: [])}
-            .do(onNext: {
-                print($0.count)
+                service.searchMovie(query: query.value, page: pageNo.value + 1)
+                    .asDriver(onErrorJustReturn: ([],0))
                 
-                if $0.count != 0 {
+            }
+            .do(onNext: {
+                if $0.0.count != 0 {
                     history.accept(UserDefaults.add(text: query.value))
                 }
                 
                 if pageNo.value == 0 {
-                    movies.accept($0)
+                    movies.accept($0.0)
                 }
                 else {
-                    movies.accept(movies.value + $0)
+                    movies.accept(movies.value + $0.0)
                 }
+                isLoadingRelay.accept(false)
+                totalPages.accept($0.1)
             })
             .flatMap { _ in movies.asDriver() }
     }

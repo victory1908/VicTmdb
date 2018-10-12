@@ -13,52 +13,30 @@ class PopularMovieVC: UIViewController {
 
     // Public
     @IBOutlet weak var collectionView: UICollectionView!
+    private var activityView: UIActivityIndicatorView!
     
     // Private
-    var viewModel: PopularMovieViewModel = PopularMovieViewModel(service: PhotoService.shared)
+    var viewModel: PopularMovieViewModel!
     private let disposeBag = DisposeBag()
     private weak var refreshControl: UIRefreshControl!
     private let dataSource = MovieDatasource()
-    
     private let flowLayoutNew = FlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if #available(iOS 11.0, *) {
-//            navigationController?.navigationBar.prefersLargeTitles = true
-//        }
-        
         setupCollectionView()
         setupRefreshControl()
+        setupActivityIndicator()
         bindRx()
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        DispatchQueue.main.async {
-            self.collectionView.collectionViewLayout.invalidateLayout()
-        }
-    }
-    
 }
 
 // MARK:- Layout Configuration
 extension PopularMovieVC {
     
     func setupCollectionView() {
-        
-        
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .always
-        } else {
-            // Fallback on earlier versions
-            automaticallyAdjustsScrollViewInsets = true
-        }
-        
         collectionView.collectionViewLayout = flowLayoutNew
         collectionView.keyboardDismissMode = .onDrag
-        
     }
     
     func setupRefreshControl() {
@@ -73,13 +51,23 @@ extension PopularMovieVC {
         }
         refreshControl = rc
     }
+    
+    func setupActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .whiteLarge)
+        activityView.color = UIColor.blue
+        activityView.center = view.center
+        view.addSubview(activityView)
+    }
 }
 
 extension PopularMovieVC {
     func bindRx() {
         collectionView.rx.reachedBottom
+            .throttle(0.1, scheduler: MainScheduler.instance)
+            .withLatestFrom(viewModel.isLoading.asObservable().filter{!$0}.map{_ in Void()})
             .bind(to:viewModel.loadMore)
             .disposed(by: disposeBag)
+    
         refreshControl.rx.controlEvent(.valueChanged)
             .bind(to: viewModel.refresher)
             .disposed(by: disposeBag)
@@ -90,6 +78,11 @@ extension PopularMovieVC {
             })
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        showActivity.asDriver(onErrorJustReturn: false)
+            .drive(activityView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
     }
 }
 

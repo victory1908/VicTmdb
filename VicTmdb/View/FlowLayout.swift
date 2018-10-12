@@ -29,7 +29,6 @@ class FlowLayout: UICollectionViewFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let layoutAttributes = super.layoutAttributesForItem(at: indexPath) else { return nil }
         guard let collectionView = collectionView else { return nil }
@@ -41,25 +40,15 @@ class FlowLayout: UICollectionViewFlowLayout {
         }
         return layoutAttributes
     }
-
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let superLayoutAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
         guard scrollDirection == .vertical else { return superLayoutAttributes }
-
+        
         let computedAttributes = superLayoutAttributes.compactMap { layoutAttribute in
             return layoutAttribute.representedElementCategory == .cell ? layoutAttributesForItem(at: layoutAttribute.indexPath) : layoutAttribute
         }
-
+        
         return computedAttributes
     }
-    
-//    override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-//        let context = super.invalidationContext(forBoundsChange: newBounds) as! UICollectionViewFlowLayoutInvalidationContext
-//        context.invalidateFlowLayoutDelegateMetrics = newBounds.size != collectionView?.bounds.size
-//        return context
-//    }
-    
-//    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-//        return true
-//    }
 }

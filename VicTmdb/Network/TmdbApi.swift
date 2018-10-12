@@ -13,7 +13,7 @@ import RxCocoa
 
 // MARK: Globals
 var showActivity = BehaviorRelay<Bool>(value: false)
-let TMDBprovider = MoyaProvider<TMDB>(
+let TMDBprovider = MoyaProvider<TMDB>(callbackQueue:DispatchQueue.global(qos: .background),
     plugins: [
 //        NetworkLoggerPlugin(verbose: true),
         NetworkActivityPlugin(networkActivityClosure: { changeType, targetType in
@@ -61,14 +61,14 @@ extension TMDB: TargetType {
     }
     
     public var sampleData: Data {
-//        switch self {
-//        case .searchMovie:
-//            return Stubber.jsonDataFromFile("SearchMovie")
-//        case .popularMovie:
-//            return Stubber.jsonDataFromFile("PopularMovie")
-//        default:
-//            break
-//        }
+        switch self {
+        case .searchMovie:
+            return Stubber.jsonDataFromFile("SearchMovie")
+        case .popularMovie:
+            return Stubber.jsonDataFromFile("PopularMovie")
+        default:
+            break
+        }
         return Data()
     }
     
