@@ -22,7 +22,6 @@ final class PopularMovieViewModel {
     var isLoading: Driver<Bool> {
         return self.isLoadingRelay.asDriver()
     }
-    let errorMessage: PublishSubject<String>
     
     // Private
     private let pageNo: BehaviorRelay<Int>
@@ -38,7 +37,7 @@ final class PopularMovieViewModel {
         self.movies = movies
         let isLoadingRelay = BehaviorRelay<Bool>(value: true)
         self.isLoadingRelay = isLoadingRelay
-        self.errorMessage = service.errorMessage
+        
         self.currentPage = pageNo.asObservable()
             .share()
             .asDriver(onErrorJustReturn: -1)

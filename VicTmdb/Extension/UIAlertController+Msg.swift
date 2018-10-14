@@ -18,10 +18,12 @@ extension UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
-        viewController?.present(alert, animated: true, completion: nil)
-//        if viewController.presentedViewController == nil {
-//            viewController.present(alert, animated: true, completion: nil)
-//        }
+        if let presentedVC = viewController?.presentedViewController {
+            presentedVC.present(alert, animated: true, completion: nil)
+            print(presentedVC.debugDescription)
+        } else {
+            viewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     static func createAlert(title: String, message: String) -> UIAlertController {

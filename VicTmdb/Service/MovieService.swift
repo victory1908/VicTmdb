@@ -27,12 +27,7 @@ struct MovieService {
             .retrySmart(3, delay: DelayOptions.constant(time: 1))
             .map(ApiResponse.self)
             .map{($0.results,$0.totalPages)}
-            .do(onError: { (error) in
-                if let error = error as? MoyaError {
-                    let errorMsg = ErrorHandler.handleError(moyaError: error)
-                    self.errorMessage.onNext(errorMsg)
-                }
-            })
+            .do(onError: {ErrorHandler.handleError(error: $0)})
     }
     
     func popularMovie(page: Int) -> Observable<[Movie]> {
@@ -42,13 +37,14 @@ struct MovieService {
             .retrySmart(3, delay: DelayOptions.constant(time: 1))
             .map(ApiResponse.self)
             .map{$0.results}
-            .catchError({ (error) in
-                if let error = error as? MoyaError {
-                    let errorMsg = ErrorHandler.handleError(moyaError: error)
-                    self.errorMessage.onNext(errorMsg)
-                }
-                return Observable.just([])
-            })
+            .do(onError: {ErrorHandler.handleError(error: $0)})
+//            .catchError({ (error) in
+//                if let error = error as? MoyaError {
+//                    let errorMsg = ErrorHandler.handleError(error: error)
+//                    self.errorMessage.onNext(errorMsg)
+//                }
+//                return Observable.just([])
+//            })
     }
     
 }

@@ -31,6 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchMovieNavi = tabBarController.viewControllers?.last as! UINavigationController
         let searchMovieVC = searchMovieNavi.viewControllers.first as! SearchMovieVC
         searchMovieVC.viewModel = SearchMovieViewModel(service: service)
+        
+        ErrorHandler.error
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {[weak self] errorMsg in
+                let alert = UIAlertController.createAlert(title: "Error", message: errorMsg)
+                if self?.window?.rootViewController?.presentedViewController == nil {
+                    self?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
 
         return true
     }

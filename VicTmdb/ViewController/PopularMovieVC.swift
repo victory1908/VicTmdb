@@ -88,15 +88,7 @@ extension PopularMovieVC {
         showActivity.asDriver(onErrorJustReturn: false)
             .drive(activityView.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        viewModel.errorMessage.asObservable().share()
-                .throttle(2, scheduler: MainScheduler.instance)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onNext: {[weak self] errorMsg in
-                    UIAlertController.show(in: self, title: "Error", message: errorMsg)
-                })
-                .disposed(by: disposeBag)
-        
+
     }
 }
 

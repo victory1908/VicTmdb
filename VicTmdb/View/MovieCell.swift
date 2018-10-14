@@ -32,6 +32,10 @@ class MovieCell: UICollectionViewCell {
          if let posterUrl = item.posterUrl(size: .big) {
             posterImageView.kf.indicatorType = .activity
             posterImageView.kf.setImage(with: posterUrl, placeholder:#imageLiteral(resourceName: "MoviePlaceHolder2.pdf") , options: [.backgroundDecode], progressBlock: nil) { (image, error, cacheType, url) in
+                guard error == nil else {
+//                    ErrorHandler.handleError(error: error!)
+                   return
+                }
                 if error == nil {
                     if image == nil {
                         self.posterImageView.image = #imageLiteral(resourceName: "MoviePlaceHolder2.pdf")

@@ -24,9 +24,6 @@ class SearchMovieViewModel {
     let currentPage: Driver<Int>
     var seachHistory: Driver<[String]>
     var isLoading: Driver<Bool>
-    let errorMessage: PublishSubject<String>
-    let noResult: PublishSubject<Bool>
-    
     
     // Private
     private let query: BehaviorRelay<String>
@@ -54,12 +51,6 @@ class SearchMovieViewModel {
         
         let movies = BehaviorRelay<[Movie]>(value: [])
         self.movies = movies
-        
-        self.errorMessage = service.errorMessage
-        
-        let noResult = PublishSubject<Bool>()
-        self.noResult = noResult
-        noResult.onNext(false)
         
         let history = BehaviorRelay<[String]>(value: UserDefaults.fetch())
         self.history = history
@@ -126,8 +117,7 @@ class SearchMovieViewModel {
                 totalPages.accept($0.1)
 
                 if pageNo.value == 0 && $0.0.count == 0 {
-                    noResult.onNext(true)
-                    print("go here?")
+                    ErrorHandler.error.onNext("No Movie Found, Please try different name")
                 }
 
                 isLoadingRelay.accept(false)

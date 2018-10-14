@@ -86,6 +86,7 @@ fileprivate extension SearchMovieVC {
             self.navigationItem.titleView = searchBar
         }
         self.definesPresentationContext = true
+        self.searchController.definesPresentationContext = true
     }
     
     func setupActivityIndicator() {
@@ -131,15 +132,6 @@ extension SearchMovieVC {
             })
             .drive(collectionView.rx.items(dataSource: movieDataSource))
             .disposed(by: disposeBag)
-    
-        viewModel.noResult
-//            .asDriver(onErrorJustReturn: true)
-            .filter{$0}
-            .subscribe({[weak self]_ in
-                UIAlertController.show(in: self, title: "OOPs", message: "No Movie found, please try different name")
-                print("got here alert?")
-            })
-            .disposed(by: disposeBag)
         
         viewModel.seachHistory.map{[Group<String>(header: "", items: $0)]}
                 .drive(searchHistoryTV.rx.items(dataSource: searchDataSource))
@@ -182,14 +174,6 @@ extension SearchMovieVC {
         refreshControl.rx.controlEvent(.valueChanged)
             .asDriver(onErrorJustReturn: ())
             .drive(viewModel.refresher)
-            .disposed(by: disposeBag)
-        
-        viewModel.errorMessage.asObservable()
-            .throttle(2, scheduler: scheduler)
-            .observeOn(scheduler)
-            .subscribe(onNext: {[weak self] errorMsg in
-                UIAlertController.show(in: self, title: "Error", message: errorMsg)
-            })
             .disposed(by: disposeBag)
         
     }
