@@ -15,13 +15,24 @@ class SearchMovieVC: UIViewController,UITableViewDelegate  {
     
     // MARK: Private
     @IBOutlet weak var collectionView: UICollectionView!
+    private weak var refreshControl: UIRefreshControl!
 
     private let disposeBag = DisposeBag()
     private var searchController: UISearchController!
     private var activityView: UIActivityIndicatorView!
     private var searchHistoryTV: UITableView!
-    private let movieDataSource = MovieDatasource()
-    private let searchDataSource = SearchDatasource()
+    private let movieDataSource = RxCollectionViewSectionedAnimatedDataSource<Group<Movie>>(configureCell: { (ds, cv, ip, item) -> MovieCell  in
+        let cell = cv.dequeueReusableCell(withReuseIdentifier: Constant.movieCellidentifier, for: ip) as! MovieCell
+        cell.configure(forItem: item)
+        return cell
+    })
+    private let searchDataSource = RxTableViewSectionedAnimatedDataSource<Group<String>>(
+        configureCell: { (ds, tv, ip, item) -> UITableViewCell  in
+            let cell = tv.dequeueReusableCell(withIdentifier: Constant.searchCell, for: ip)
+            cell.textLabel?.text = item
+            return cell
+    })
+    
     private let flowLayoutNew = FlowLayout()
     private lazy var scheduler: SchedulerType! = MainScheduler.instance
     
@@ -36,6 +47,7 @@ class SearchMovieVC: UIViewController,UITableViewDelegate  {
         setupCollectionView()
         setupSearchController()
         setupActivityIndicator()
+        setupRefreshControl()
         setUpSearchHistory()
         bindRx()
     }
@@ -49,6 +61,13 @@ fileprivate extension SearchMovieVC {
     func setupCollectionView() {
         collectionView.collectionViewLayout = flowLayoutNew
         collectionView.keyboardDismissMode = .onDrag
+        
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .always
+        } else {
+            // Fallback on earlier versions
+            automaticallyAdjustsScrollViewInsets = true
+        }
     }
     
     func setupSearchController() {
@@ -76,6 +95,14 @@ fileprivate extension SearchMovieVC {
         view.addSubview(activityView)
     }
     
+    func setupRefreshControl() {
+        let rc = UIRefreshControl()
+        rc.backgroundColor = .clear
+        rc.tintColor = .lightGray
+        collectionView.addSubview(rc)
+        refreshControl = rc
+    }
+    
     func setUpSearchHistory() {
         let frame = CGRect(x: 0, y: searchBar.frame.height, width: searchBar.frame.width, height: view.frame.size.height)
         searchHistoryTV = UITableView(frame: frame, style: .plain)
@@ -91,28 +118,24 @@ fileprivate extension SearchMovieVC {
 extension SearchMovieVC {
     func bindRx() {
         
-        let searchClick = searchBar.rx.textDidEndEditing.withLatestFrom(searchBar.rx.text.orEmpty)
-        
         collectionView.rx.reachedBottom
-            .debounce(0.1, scheduler: scheduler)
-            .throttle(0.1, scheduler: scheduler)
-            .bind(to:viewModel.loadMore)
+            .throttle(2, scheduler: scheduler)
+            .asDriver(onErrorJustReturn: ())
+            .drive(viewModel.loadMore)
             .disposed(by: disposeBag)
-        let movies = viewModel.results.asObservable().share()
         
-        movies
+        viewModel.results
             .map { [Group<Movie>(header: "", items: $0)] }
-            .bind(to: collectionView.rx.items(dataSource: movieDataSource))
+            .do(onNext: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+            })
+            .drive(collectionView.rx.items(dataSource: movieDataSource))
             .disposed(by: disposeBag)
-        
-        movies
-            .filter{$0.count == 0}
-            .debounce(0.3, scheduler: scheduler)
-            .subscribe({_ in
-                let alert = UIAlertController(title: "OOPs", message: "No film found. Please try another name", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(action)
-                alert.show()
+    
+        viewModel.noResult
+            .filter{$0}
+            .subscribe({[weak self]_ in
+                UIAlertController.show(in: self, title: "OOPs", message: "No Movie found, please try different name")
             })
             .disposed(by: disposeBag)
         
@@ -121,27 +144,31 @@ extension SearchMovieVC {
                 .disposed(by: disposeBag)
         
         RxKeyboard.instance.visibleHeight
-            .drive(onNext: { keyboardVisibleHeight in
-                self.searchHistoryTV.contentInset.bottom = keyboardVisibleHeight
+            .drive(onNext: { [weak self] keyboardVisibleHeight in
+                    self?.searchHistoryTV.contentInset.bottom = keyboardVisibleHeight
             })
             .disposed(by: disposeBag)
+
+        searchBar.rx.textDidBeginEditing.map{_ in false}.asDriver(onErrorJustReturn: true).drive(searchHistoryTV.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        searchBar.rx.textDidEndEditing.map{_ in true}.asDriver(onErrorJustReturn: true).drive(searchHistoryTV.rx.isHidden)
+                .disposed(by: disposeBag)
         
-        searchBar.rx.textDidBeginEditing.subscribe(onNext: {
-            self.searchHistoryTV.isHidden = false
+        let historyClick = searchHistoryTV.rx.modelSelected(String.self)
+            .map{$0}.share()
+        
+        historyClick.subscribe(onNext: {[weak self] history in
+            self?.searchBar.text = history
+            self?.searchHistoryTV.isHidden = true
+            self?.searchBar.resignFirstResponder()
         }).disposed(by: disposeBag)
         
-        searchBar.rx.textDidEndEditing.subscribe(onNext: {
-            self.searchHistoryTV.isHidden = true
-        }).disposed(by: disposeBag)
+        historyClick.bind(to: viewModel.historyClick)
+            .disposed(by: disposeBag)
         
-        let historyClick = searchHistoryTV.rx.modelSelected(String.self).map{$0}.do(onNext: {
-            self.searchBar.text = $0
-            self.searchHistoryTV.isHidden = true
-            self.searchBar.resignFirstResponder()
-        })
-        
-        Observable.of(searchClick,historyClick).merge().debounce(0.3, scheduler: scheduler)
-            .withLatestFrom(viewModel.isLoading.filter{!$0}, resultSelector: {query, _ in return query })
+        searchBar.rx.searchButtonClicked
+            .withLatestFrom(searchBar.rx.text.orEmpty.filter{!$0.isEmpty})
             .filter{!$0.isEmpty}
             .bind(to: viewModel.search)
             .disposed(by: disposeBag)
@@ -149,6 +176,19 @@ extension SearchMovieVC {
         showActivity.asDriver(onErrorJustReturn: false)
                     .drive(activityView.rx.isAnimating)
                     .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .asDriver(onErrorJustReturn: ())
+            .drive(viewModel.refresher)
+            .disposed(by: disposeBag)
+        
+        viewModel.errorMessage.asObservable()
+            .throttle(2, scheduler: scheduler)
+            .observeOn(scheduler)
+            .subscribe(onNext: {[weak self] errorMsg in
+                UIAlertController.show(in: self, title: "Error", message: errorMsg)
+            })
+            .disposed(by: disposeBag)
         
     }
 }

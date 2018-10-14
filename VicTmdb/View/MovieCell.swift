@@ -29,12 +29,12 @@ class MovieCell: UICollectionViewCell {
     }
     
     func configure(forItem item: Movie) {
-        if let path = item.posterPath, let posterUrl = URL(string: Constant.imageUrlString + path) {
+         if let posterUrl = item.posterUrl(size: .big) {
             posterImageView.kf.indicatorType = .activity
-            posterImageView.kf.setImage(with: posterUrl, placeholder:#imageLiteral(resourceName: "Movie.pdf") , options: [.backgroundDecode], progressBlock: nil) { (image, error, cacheType, url) in
+            posterImageView.kf.setImage(with: posterUrl, placeholder:#imageLiteral(resourceName: "MoviePlaceHolder2.pdf") , options: [.backgroundDecode], progressBlock: nil) { (image, error, cacheType, url) in
                 if error == nil {
                     if image == nil {
-                        self.posterImageView.image = #imageLiteral(resourceName: "Movie.pdf")
+                        self.posterImageView.image = #imageLiteral(resourceName: "MoviePlaceHolder2.pdf")
                     }
                 }
             }
@@ -44,7 +44,6 @@ class MovieCell: UICollectionViewCell {
         }
     }
     
-
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         let autoLayoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
@@ -73,7 +72,7 @@ extension MovieCell {
     func clearAll() {
         // Cancel downloading of image and then reset
         posterImageView.kf.cancelDownloadTask()
-        posterImageView.image = UIImage(named: "Movie")
+        posterImageView.image = #imageLiteral(resourceName: "MoviePlaceHolder2.pdf")
     }
 }
 

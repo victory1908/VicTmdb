@@ -12,11 +12,6 @@ import Moya
 import RxSwift
 struct ErrorHandler {
     
-    static var errorObserver: Observable<String> = Observable.create { (observer) -> Disposable in
-        
-        return Disposables.create()
-    }
-    
     static func handleError (moyaError: MoyaError) -> String {
         switch moyaError {
         case .imageMapping:
@@ -37,15 +32,6 @@ struct ErrorHandler {
             return "requestMapping error"
         case .parameterEncoding:
             return "parameterEncoding error"
-        }
-    }
-    
-    static func displayErrorMsg(in viewcontroller: UIViewController, message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        if viewcontroller.presentedViewController == nil{
-            alert.show()
         }
     }
 }

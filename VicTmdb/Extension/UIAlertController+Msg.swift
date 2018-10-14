@@ -14,4 +14,19 @@ extension UIAlertController {
         window.makeKeyAndVisible()
         window.rootViewController?.present(self, animated: false, completion: nil)
     }
+    static func show(in viewController: UIViewController?, title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        if viewController?.presentedViewController == nil {
+            viewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    static func createAlert(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        return alert
+    }
 }

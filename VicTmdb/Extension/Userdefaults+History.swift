@@ -18,14 +18,12 @@ extension UserDefaults {
         UserDefaults.standard.set(history, forKey: historyKey)
     }
     
-    
     static func fetch() -> [String] {
         if let hitoryArray = UserDefaults.standard.object(forKey: historyKey) as? [String] {
             history = hitoryArray
         }
         return history
     }
-    
     static func add(text: String) -> [String]{
         if !history.contains(text) {
             if history.count < 10 {
@@ -38,5 +36,4 @@ extension UserDefaults {
         self.save()
         return history
     }
-    
 }

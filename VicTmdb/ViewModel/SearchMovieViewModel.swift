@@ -13,14 +13,20 @@ import RxCocoa
 class SearchMovieViewModel {
     
     // Inputs
+    var refresher = PublishSubject<Void>()
     var search = PublishSubject<String>()
     var loadMore = PublishSubject<Void>()
+    var cancelClick = PublishSubject<Void>()
+    var historyClick = PublishSubject<String>()
     
     // Outputs
     let results: Driver<[Movie]>
     let currentPage: Driver<Int>
     var seachHistory: Driver<[String]>
     var isLoading: Driver<Bool>
+    let errorMessage: PublishSubject<String>
+    let noResult: PublishSubject<Bool>
+    
     
     // Private
     private let query: BehaviorRelay<String>
@@ -30,8 +36,6 @@ class SearchMovieViewModel {
     private let service: MovieService
     private let history: BehaviorRelay<[String]>
     private let isLoadingRelay: BehaviorRelay<Bool>
-    
-    let test = BehaviorRelay<String>(value: "test")
     
     init(service: MovieService) {
         self.service = service
@@ -51,6 +55,12 @@ class SearchMovieViewModel {
         let movies = BehaviorRelay<[Movie]>(value: [])
         self.movies = movies
         
+        self.errorMessage = service.errorMessage
+        
+        let noResult = PublishSubject<Bool>()
+        self.noResult = noResult
+        noResult.onNext(false)
+        
         let history = BehaviorRelay<[String]>(value: UserDefaults.fetch())
         self.history = history
         self.seachHistory = history.asDriver(onErrorJustReturn: UserDefaults.fetch())
@@ -58,6 +68,11 @@ class SearchMovieViewModel {
         let isLoadingRelay = BehaviorRelay<Bool>(value: false)
         self.isLoadingRelay = isLoadingRelay
         self.isLoading = isLoadingRelay.asDriver()
+        
+        let refresh = refresher.asObservable()
+            .do(onNext: {
+                pageNo.accept(0)
+            })
         
         let keyword = search.asDriver(onErrorJustReturn: "")
             .filter{!$0.isEmpty}
@@ -68,12 +83,23 @@ class SearchMovieViewModel {
             .map { _ in () }
         
         let loadNext = loadMore.asObservable()
+            .filter{!query.value.isEmpty}
             .filter { _ in pageNo.value < totalPages.value }
+            .filter{_ in return isLoadingRelay.value == false}
             .do(onNext: { _ in
                 pageNo.accept(pageNo.value + 1)
+                print("\(pageNo.value)")
             })
         
-        let request = Observable.of(keyword.asObservable(),loadNext)
+        let selectedHistory = historyClick.asObservable()
+            .do(onNext: { selectedHistory in
+                pageNo.accept(0)
+                query.accept(selectedHistory)
+            })
+            .map{_ in () }
+        
+        
+        let request = Observable.of(keyword.asObservable(),loadNext,refresh,selectedHistory)
             .merge()
             .share()
             .asDriver(onErrorDriveWith: Driver.empty())
@@ -85,23 +111,31 @@ class SearchMovieViewModel {
             .flatMap { _ in return
                 service.searchMovie(query: query.value, page: pageNo.value + 1)
                     .asDriver(onErrorJustReturn: ([],0))
-                
             }
             .do(onNext: {
                 if $0.0.count != 0 {
                     history.accept(UserDefaults.add(text: query.value))
                 }
-                
+                print("count before \($0.0.count)")
                 if pageNo.value == 0 {
                     movies.accept($0.0)
                 }
                 else {
-                    movies.accept(movies.value + $0.0)
+                    movies.accept(Movie.union(left: movies.value, right: $0.0))
                 }
-                isLoadingRelay.accept(false)
+
                 totalPages.accept($0.1)
+                print("movie count \(movies.value.count)")
+
+                if pageNo.value == 0 && $0.0.count == 0 {
+                    print("count \($0.0.count)")
+                    noResult.onNext(true)
+                }
+
+                isLoadingRelay.accept(false)
             })
             .flatMap { _ in movies.asDriver() }
+    
     }
     
 }

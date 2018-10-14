@@ -13,7 +13,7 @@
         <!--PopularMovieVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="popularMovieVC" id="9pv-A4-QxB" userLabel="PopularMovieVC" customClass="PopularMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popularMovieVC" extendedLayoutIncludesOpaqueBars="YES" id="9pv-A4-QxB" userLabel="PopularMovieVC" customClass="PopularMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,27 +22,27 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vZ5-7u-B50">
-                                    <size key="itemSize" width="334" height="529"/>
+                                    <size key="itemSize" width="350" height="529"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="movieCell" id="D1n-RU-VAl" customClass="MovieCell" customModule="VicTmdb" customModuleProvider="target">
-                                        <rect key="frame" x="20.5" y="0.0" width="334" height="529"/>
+                                        <rect key="frame" x="12.5" y="0.0" width="350" height="529"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="529"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="529"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-97-Co3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="529"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="529"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="98J-NV-03i">
-                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="529"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="529"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX3-VG-mGG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="427"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" insetsLayoutMarginsFromSafeArea="NO" image="MoviePlaceHolder2" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX3-VG-mGG">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="427"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" secondItem="hX3-VG-mGG" secondAttribute="width" multiplier="3:2" priority="999" id="9GB-FU-xuo"/>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" secondItem="hX3-VG-mGG" secondAttribute="width" multiplier="3:2" priority="999" id="ghJ-cp-iSp"/>
@@ -65,22 +65,22 @@
                                                                     </variation>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="z0t-C3-CLj">
-                                                                    <rect key="frame" x="0.0" y="437" width="334" height="92"/>
+                                                                    <rect key="frame" x="0.0" y="437" width="350" height="92"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3t-1o-KYG" userLabel="NameLbl">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="31.5"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlf-LU-bt8" userLabel="ReleaseDateLbl">
-                                                                            <rect key="frame" x="0.0" y="39.5" width="334" height="24"/>
+                                                                            <rect key="frame" x="0.0" y="39.5" width="350" height="24"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJP-eo-0Uc" userLabel="OverviewLbl">
-                                                                            <rect key="frame" x="0.0" y="71.5" width="334" height="20.5"/>
+                                                                            <rect key="frame" x="0.0" y="71.5" width="350" height="20.5"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@
         <!--SearchMovieVC-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController storyboardIdentifier="searchMovieVC" title="Search" id="8rJ-Kc-sve" userLabel="SearchMovieVC" customClass="SearchMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchMovieVC" title="Search" extendedLayoutIncludesOpaqueBars="YES" id="8rJ-Kc-sve" userLabel="SearchMovieVC" customClass="SearchMovieVC" customModule="VicTmdb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,7 +265,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -325,4 +325,7 @@
             <point key="canvasLocation" x="1140" y="-520.38980509745136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MoviePlaceHolder2" width="350" height="525"/>
+    </resources>
 </document>

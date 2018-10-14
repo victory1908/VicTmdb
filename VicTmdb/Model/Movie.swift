@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 struct Movie: Codable {
     // Required
@@ -18,6 +19,10 @@ struct Movie: Codable {
     let posterPath: String?
     let releaseDate: String?
     let status: String?
+    
+    func posterUrl(size: Constant.Size) -> URL? {
+        return URL(string: "\(Constant.imageUrlString)\(size.rawValue)\(self.posterPath ?? "")")
+    }
     
     init(id: Int, title: String, overview: String? = nil, posterPath: String? = nil, releaseDate: String? = nil, status: String? = nil) {
         self.id = id
@@ -45,3 +50,20 @@ extension Movie: Equatable {
         return lhs.id == rhs.id // For now id comparision is enough
     }
 }
+
+extension Movie: Hashable {
+    static func union (left: [Movie],right: [Movie] ) -> [Movie]{
+        return Array(Set(left).union(Set(right)))
+    }
+    
+}
+
+extension Movie:IdentifiableType {
+    typealias Identity = Int
+
+    var identity: Identity {
+        return id
+    }
+}
+
+

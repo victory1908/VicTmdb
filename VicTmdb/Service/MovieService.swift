@@ -9,12 +9,10 @@
 import Foundation
 import Moya
 import RxSwift
-//import RxMoya
 
 struct MovieService {
-    static let shared = MovieService(provider: TMDBprovider)
 
-    let provider: MoyaProvider<TMDB>!
+    let provider: MoyaProvider<TMDB>
     
     var errorMessage = PublishSubject<String>()
     
@@ -42,12 +40,14 @@ struct MovieService {
             .request(.popularMovie(page: page + 1))
             .asObservable()
             .retrySmart(3, delay: DelayOptions.constant(time: 1))
-            .map([Movie].self, atKeyPath: "results")
-            .do(onError: { (error) in
+            .map(ApiResponse.self)
+            .map{$0.results}
+            .catchError({ (error) in
                 if let error = error as? MoyaError {
                     let errorMsg = ErrorHandler.handleError(moyaError: error)
                     self.errorMessage.onNext(errorMsg)
                 }
+                return Observable.just([])
             })
     }
     

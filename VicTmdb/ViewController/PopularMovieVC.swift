@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxDataSources
 
 class PopularMovieVC: UIViewController {
 
@@ -19,7 +20,11 @@ class PopularMovieVC: UIViewController {
     var viewModel: PopularMovieViewModel!
     private let disposeBag = DisposeBag()
     private weak var refreshControl: UIRefreshControl!
-    private let dataSource = MovieDatasource()
+    private let movieDataSource = RxCollectionViewSectionedAnimatedDataSource<Group<Movie>>(configureCell: { (ds, cv, ip, movie) -> MovieCell in
+        let cell = cv.dequeueReusableCell(withReuseIdentifier: Constant.movieCellidentifier, for: ip) as! MovieCell
+        cell.configure(forItem: movie)
+        return cell
+    })
     private let flowLayoutNew = FlowLayout()
     
     override func viewDidLoad() {
@@ -63,25 +68,34 @@ extension PopularMovieVC {
 extension PopularMovieVC {
     func bindRx() {
         collectionView.rx.reachedBottom
-            .throttle(0.1, scheduler: MainScheduler.instance)
-            .withLatestFrom(viewModel.isLoading.asObservable().filter{!$0}.map{_ in Void()})
-            .bind(to:viewModel.loadMore)
+            .throttle(2, scheduler: MainScheduler.instance)
+            .asDriver(onErrorJustReturn: ())
+            .drive(viewModel.loadMore)
             .disposed(by: disposeBag)
     
         refreshControl.rx.controlEvent(.valueChanged)
-            .bind(to: viewModel.refresher)
+            .asDriver(onErrorJustReturn: ())
+            .drive(viewModel.refresher)
             .disposed(by: disposeBag)
-        viewModel.results.asObservable()
+        viewModel.results
             .map { [Group<Movie>(header: "", items: $0)] }
-            .do(onNext: { [unowned self] _ in
-                self.refreshControl.endRefreshing()
+            .do(onNext: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
             })
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .drive(collectionView.rx.items(dataSource: movieDataSource))
             .disposed(by: disposeBag)
         
         showActivity.asDriver(onErrorJustReturn: false)
             .drive(activityView.rx.isAnimating)
             .disposed(by: disposeBag)
+        
+        viewModel.errorMessage.asObservable().share()
+                .throttle(2, scheduler: MainScheduler.instance)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: {[weak self] errorMsg in
+                    UIAlertController.show(in: self, title: "Error", message: errorMsg)
+                })
+                .disposed(by: disposeBag)
         
     }
 }

@@ -14,32 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var service: MovieService?
+    var service: MovieService!
     let disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        service = MovieService.shared
+        let service = MovieService(provider: TMDBprovider)
         
         let tabBarController = window?.rootViewController as! UITabBarController
         
         let popularMovieNavi = tabBarController.viewControllers?.first as! UINavigationController
-        let popularMovieVC = popularMovieNavi.visibleViewController as! PopularMovieVC
-        popularMovieVC.viewModel = PopularMovieViewModel(service: service!)
+        let popularMovieVC = popularMovieNavi.viewControllers.first as! PopularMovieVC
+        popularMovieVC.viewModel = PopularMovieViewModel(service: service)
         
         let searchMovieNavi = tabBarController.viewControllers?.last as! UINavigationController
-        let searchMovieVC = searchMovieNavi.visibleViewController as! SearchMovieVC
-        searchMovieVC.viewModel = SearchMovieViewModel(service: service!)
-        
-        service?.errorMessage
-            .throttle(1, scheduler: MainScheduler.instance)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {errorMsg in
-                ErrorHandler.displayErrorMsg(in: (self.window?.rootViewController)!, message: errorMsg)
-        }).disposed(by: disposeBag)
+        let searchMovieVC = searchMovieNavi.viewControllers.first as! SearchMovieVC
+        searchMovieVC.viewModel = SearchMovieViewModel(service: service)
 
-        
         return true
     }
 

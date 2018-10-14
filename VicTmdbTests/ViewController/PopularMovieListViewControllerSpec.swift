@@ -38,12 +38,6 @@ class PopularMovieVCSpec: QuickSpec {
             it("has a refresh control in collection view") {
                 expect(sut.collectionView.refreshControl).notTo(beNil())
             }
-            
-//            it("has a no results found view as background view and is hidden") {
-//                let label = sut.collectionView.backgroundView as? UILabel
-//                expect(label).notTo(beNil())
-//                expect(label?.isHidden).to(beTrue())
-//            }
         }
         
         context("Behaviour") {

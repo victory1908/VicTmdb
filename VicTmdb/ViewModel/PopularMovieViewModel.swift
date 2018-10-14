@@ -22,33 +22,36 @@ final class PopularMovieViewModel {
     var isLoading: Driver<Bool> {
         return self.isLoadingRelay.asDriver()
     }
+    let errorMessage: PublishSubject<String>
     
     // Private
-    private let pageNo = BehaviorRelay<Int>(value: 0)
-    private let movies = BehaviorRelay<[Movie]>(value: [])
+    private let pageNo: BehaviorRelay<Int>
+    private let movies: BehaviorRelay<[Movie]>
     private let service: MovieService
-    
-    private let isLoadingRelay = BehaviorRelay<Bool>(value: false)
+    private let isLoadingRelay: BehaviorRelay<Bool>
     
     init(service: MovieService) {
         self.service = service
-        bindRx()
-    }
-    
-    func bindRx(){
-        self.currentPage = self.pageNo.asObservable()
+        let pageNo = BehaviorRelay<Int>(value: 0)
+        self.pageNo = pageNo
+        let movies = BehaviorRelay<[Movie]>(value: [])
+        self.movies = movies
+        let isLoadingRelay = BehaviorRelay<Bool>(value: true)
+        self.isLoadingRelay = isLoadingRelay
+        self.errorMessage = service.errorMessage
+        self.currentPage = pageNo.asObservable()
             .share()
             .asDriver(onErrorJustReturn: -1)
         
         let refresh = refresher.asObservable()
             .startWith(())
             .do(onNext: {
-                self.pageNo.accept(0)
+                pageNo.accept(0)
             })
         
         let loadNext = loadMore.asObservable()
             .do(onNext: { _ in
-                self.pageNo.accept(self.pageNo.value + 1)
+                pageNo.accept(pageNo.value + 1)
             })
         
         let request = Observable.of(refresh,loadNext)
@@ -58,21 +61,22 @@ final class PopularMovieViewModel {
         
         results = request
             .do(onNext: {
-                self.isLoadingRelay.accept(true)
+                isLoadingRelay.accept(true)
             })
-            .flatMap { _ in
-                return self.service.popularMovie(page: self.pageNo.value + 1)
+            .flatMap {_ in
+                return service.popularMovie(page: pageNo.value + 1)
                     .asDriver(onErrorJustReturn: [])
-            }.do(onNext: {
-                if self.pageNo.value == 0 {
-                    self.movies.accept($0)
+            }
+            .do(onNext: {
+                if pageNo.value == 0 {
+                    movies.accept($0)
                 }
                 else {
-                    self.movies.accept(self.movies.value + $0)
+                    movies.accept(Movie.union(left: movies.value, right: $0))
                 }
-                self.isLoadingRelay.accept(false)
+                isLoadingRelay.accept(false)
             })
-            .flatMap { _ in self.movies.asDriver() }
+            .flatMap { _ in movies.asDriver() }
     }
     
 }
