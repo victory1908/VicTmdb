@@ -88,7 +88,6 @@ class SearchMovieViewModel {
             .filter{_ in return isLoadingRelay.value == false}
             .do(onNext: { _ in
                 pageNo.accept(pageNo.value + 1)
-                print("\(pageNo.value)")
             })
         
         let selectedHistory = historyClick.asObservable()
@@ -116,7 +115,7 @@ class SearchMovieViewModel {
                 if $0.0.count != 0 {
                     history.accept(UserDefaults.add(text: query.value))
                 }
-                print("count before \($0.0.count)")
+                
                 if pageNo.value == 0 {
                     movies.accept($0.0)
                 }
@@ -125,10 +124,8 @@ class SearchMovieViewModel {
                 }
 
                 totalPages.accept($0.1)
-                print("movie count \(movies.value.count)")
 
                 if pageNo.value == 0 && $0.0.count == 0 {
-                    print("count \($0.0.count)")
                     noResult.onNext(true)
                 }
 
