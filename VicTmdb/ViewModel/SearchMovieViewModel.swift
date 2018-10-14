@@ -127,6 +127,7 @@ class SearchMovieViewModel {
 
                 if pageNo.value == 0 && $0.0.count == 0 {
                     noResult.onNext(true)
+                    print("go here?")
                 }
 
                 isLoadingRelay.accept(false)

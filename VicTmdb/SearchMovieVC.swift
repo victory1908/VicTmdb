@@ -133,9 +133,11 @@ extension SearchMovieVC {
             .disposed(by: disposeBag)
     
         viewModel.noResult
+//            .asDriver(onErrorJustReturn: true)
             .filter{$0}
             .subscribe({[weak self]_ in
                 UIAlertController.show(in: self, title: "OOPs", message: "No Movie found, please try different name")
+                print("got here alert?")
             })
             .disposed(by: disposeBag)
         
