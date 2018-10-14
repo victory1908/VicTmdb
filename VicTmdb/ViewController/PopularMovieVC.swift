@@ -77,6 +77,7 @@ extension PopularMovieVC {
             .asDriver(onErrorJustReturn: ())
             .drive(viewModel.refresher)
             .disposed(by: disposeBag)
+        
         viewModel.results
             .map { [Group<Movie>(header: "", items: $0)] }
             .do(onNext: { [weak self] _ in

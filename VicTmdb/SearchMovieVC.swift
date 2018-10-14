@@ -118,13 +118,7 @@ fileprivate extension SearchMovieVC {
 
 extension SearchMovieVC {
     func bindRx() {
-        
-        collectionView.rx.reachedBottom
-            .throttle(2, scheduler: scheduler)
-            .asDriver(onErrorJustReturn: ())
-            .drive(viewModel.loadMore)
-            .disposed(by: disposeBag)
-        
+    
         viewModel.results
             .map { [Group<Movie>(header: "", items: $0)] }
             .do(onNext: { [weak self] _ in
@@ -133,7 +127,8 @@ extension SearchMovieVC {
             .drive(collectionView.rx.items(dataSource: movieDataSource))
             .disposed(by: disposeBag)
         
-        viewModel.seachHistory.map{[Group<String>(header: "", items: $0)]}
+        viewModel.seachHistory
+                .map{[Group<String>(header: "", items: $0)]}
                 .drive(searchHistoryTV.rx.items(dataSource: searchDataSource))
                 .disposed(by: disposeBag)
         
@@ -143,28 +138,38 @@ extension SearchMovieVC {
             })
             .disposed(by: disposeBag)
 
-        searchBar.rx.textDidBeginEditing.map{_ in false}.asDriver(onErrorJustReturn: true).drive(searchHistoryTV.rx.isHidden)
+        searchBar.rx.textDidBeginEditing.map{_ in false}
+            .asDriver(onErrorJustReturn: true)
+            .drive(searchHistoryTV.rx.isHidden)
             .disposed(by: disposeBag)
 
-        searchBar.rx.textDidEndEditing.map{_ in true}.asDriver(onErrorJustReturn: true).drive(searchHistoryTV.rx.isHidden)
-                .disposed(by: disposeBag)
-        
-        let historyClick = searchHistoryTV.rx.modelSelected(String.self)
-            .map{$0}.share()
-        
-        historyClick.subscribe(onNext: {[weak self] history in
-            self?.searchBar.text = history
-            self?.searchHistoryTV.isHidden = true
-            self?.searchBar.resignFirstResponder()
-        }).disposed(by: disposeBag)
-        
-        historyClick.bind(to: viewModel.historyClick)
+        searchBar.rx.textDidEndEditing.map{_ in true}
+            .asDriver(onErrorJustReturn: true)
+            .drive(searchHistoryTV.rx.isHidden)
             .disposed(by: disposeBag)
         
         searchBar.rx.searchButtonClicked
-            .withLatestFrom(searchBar.rx.text.orEmpty.filter{!$0.isEmpty})
+            .withLatestFrom(searchBar.rx.text.orEmpty)
             .filter{!$0.isEmpty}
             .bind(to: viewModel.search)
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.reachedBottom
+            .throttle(2, scheduler: scheduler)
+            .asDriver(onErrorJustReturn: ())
+            .drive(viewModel.loadMore)
+            .disposed(by: disposeBag)
+        
+        searchHistoryTV.rx
+            .modelSelected(String.self)
+            .map{$0}
+            .asDriver(onErrorJustReturn: "")
+            .do(onNext: {[weak self] history in
+                self?.searchBar.text = history
+                self?.searchHistoryTV.isHidden = true
+                self?.searchBar.resignFirstResponder()
+            })
+            .drive(viewModel.historyClick)
             .disposed(by: disposeBag)
         
         showActivity.asDriver(onErrorJustReturn: false)

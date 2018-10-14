@@ -1,5 +1,5 @@
 #  VicTmdb
-### feature
+### Feature
 1. Movie list
 2. Search for movie
 3. Endless scrolling
@@ -9,9 +9,9 @@
 6. Error a and retry handle
 7. Testing
 
-## Library use:
+# Library used:
 
-# Pods for VicTmdb
+## Pods for VicTmdb
 1. 'Moya'
 2. 'Moya/RxSwift'
 3. 'RxSwift'
@@ -20,7 +20,7 @@
 6. 'Kingfisher'
 7. 'RxKeyboard'
 
-# Pods for testing
+## Pods for testing
 1. 'Quick'
 2. 'Nimble'
 3. 'RxTest'

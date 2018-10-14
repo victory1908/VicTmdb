@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 // MARK: Globals
-var showActivity = BehaviorRelay<Bool>(value: false)
+var showActivity = PublishRelay<Bool>()
 let TMDBprovider = MoyaProvider<TMDB>(callbackQueue:DispatchQueue.global(qos: .background),
     plugins: [
 //        NetworkLoggerPlugin(verbose: true),
