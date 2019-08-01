@@ -22,15 +22,20 @@ extension ObservableType {
     func retrySmart(_ maxAttemptCount: Int = Int.max,
                delay: DelayOptions,
                didBecomeReachable: Signal<Void> = Reachability.shared.didBecomeReachable,
-               shouldRetry: @escaping (Error) -> Bool = { _ in true }) -> Observable<E> {
+               shouldRetry: @escaping (Error) -> Bool = { _ in true }) -> Observable<Element> {
         return retryWhen { (errors: Observable<Error>) in
             return errors.enumerated().flatMap { attempt, error -> Observable<Void> in
                 guard shouldRetry(error), maxAttemptCount > attempt + 1 else {
                     return .error(error)
                 }
                 
+//                let timer = Observable<Int>.timer(
+//                    RxTimeInterval(delay.make(attempt + 1)),
+//                    scheduler: MainScheduler.instance
+//                    ).map { _ in () } // cast to Observable<Void>
+//                return Observable.merge(timer, didBecomeReachable.asObservable())
                 let timer = Observable<Int>.timer(
-                    RxTimeInterval(delay.make(attempt + 1)),
+                    .seconds(attempt + 1),
                     scheduler: MainScheduler.instance
                     ).map { _ in () } // cast to Observable<Void>
                 return Observable.merge(timer, didBecomeReachable.asObservable())
@@ -40,7 +45,7 @@ extension ObservableType {
 }
 
 enum DelayOptions {
-    case immediate()
+    case immediate
     case constant(time: Double)
     case exponential(initial: Double, multiplier: Double, maxDelay: Double)
     case custom(closure: (Int) -> Double)

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00260403B21E8A5EFB651036 /* Pods_VicTmdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */; };
-		41F17AD2DD6A57E36CA21BB5 /* Pods_VicTmdbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159C669104C1B4403F7916EF /* Pods_VicTmdbUITests.framework */; };
+		424E7CC95BD0A42F2B183656 /* Pods_VicTmdbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6749E9B1CCA3D031A9AB8632 /* Pods_VicTmdbTests.framework */; };
+		84F19AB938F00CFDFB8D08BC /* Pods_VicTmdb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E7124FD93105E2B2E4459 /* Pods_VicTmdb.framework */; };
 		A03597FA216DD88F0057715A /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03597F9216DD88F0057715A /* FlowLayout.swift */; };
 		A050C926216FC6C600A03007 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050C925216FC6C600A03007 /* ErrorHandler.swift */; };
 		A050C928216FD59700A03007 /* RxSwift+Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050C927216FD59700A03007 /* RxSwift+Retry.swift */; };
@@ -48,7 +48,7 @@
 		A0D1EF2D216B75C40049227A /* KeyedCodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D1EF2C216B75C40049227A /* KeyedCodingContainer.swift */; };
 		A0E9776D2170861900859883 /* UIAlertController+Msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E9776C2170861900859883 /* UIAlertController+Msg.swift */; };
 		A0E977712170E44300859883 /* RxSwift+flatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E977702170E44300859883 /* RxSwift+flatMap.swift */; };
-		F5583D2ED169D2ADFB59FF9A /* Pods_VicTmdbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C841BBE2950ECE8F25D4C3E /* Pods_VicTmdbTests.framework */; };
+		F31C295D28DA3872B0DC21A6 /* Pods_VicTmdbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3AB02364FE4A7776B37D10 /* Pods_VicTmdbUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,12 +69,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		159C669104C1B4403F7916EF /* Pods_VicTmdbUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdbUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C841BBE2950ECE8F25D4C3E /* Pods_VicTmdbTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdbTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B52E47A0A2306BAF8DE62A /* Pods-VicTmdbTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests.release.xcconfig"; sourceTree = "<group>"; };
-		3F15DCD08B4467B334320647 /* Pods-VicTmdb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb.debug.xcconfig"; sourceTree = "<group>"; };
-		5D046881DE017820C4845045 /* Pods-VicTmdb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb.release.xcconfig"; sourceTree = "<group>"; };
-		8C94E4DF94022233DFF142C0 /* Pods-VicTmdbTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests.debug.xcconfig"; sourceTree = "<group>"; };
+		02FB1EE02F8919B130F683FA /* Pods-VicTmdbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.release.xcconfig"; path = "Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6749E9B1CCA3D031A9AB8632 /* Pods_VicTmdbTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdbTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		855191EE37B3120CD80A2833 /* Pods-VicTmdbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.debug.xcconfig"; path = "Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E3AB02364FE4A7776B37D10 /* Pods_VicTmdbUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdbUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		906E7124FD93105E2B2E4459 /* Pods_VicTmdb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9965342D02D6A4CF2EB526E8 /* Pods-VicTmdb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.release.xcconfig"; path = "Target Support Files/Pods-VicTmdb/Pods-VicTmdb.release.xcconfig"; sourceTree = "<group>"; };
 		A03597F9216DD88F0057715A /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		A050C925216FC6C600A03007 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		A050C927216FD59700A03007 /* RxSwift+Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Retry.swift"; sourceTree = "<group>"; };
@@ -118,9 +118,9 @@
 		A0E9776C2170861900859883 /* UIAlertController+Msg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Msg.swift"; sourceTree = "<group>"; };
 		A0E9776E21708CF600859883 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0E977702170E44300859883 /* RxSwift+flatMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+flatMap.swift"; sourceTree = "<group>"; };
-		A6C865E80E949644F764B8AB /* Pods-VicTmdbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VicTmdb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB0DBAEC880184EC40537621 /* Pods-VicTmdbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VicTmdbUITests/Pods-VicTmdbUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B279BA65FCAF5A8D184FAA4E /* Pods-VicTmdbTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbTests.release.xcconfig"; path = "Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB80E91771332F22FEC24D32 /* Pods-VicTmdbTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdbTests.debug.xcconfig"; path = "Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE4BAC9FDDF191C67CCDC4F6 /* Pods-VicTmdb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTmdb.debug.xcconfig"; path = "Target Support Files/Pods-VicTmdb/Pods-VicTmdb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00260403B21E8A5EFB651036 /* Pods_VicTmdb.framework in Frameworks */,
+				84F19AB938F00CFDFB8D08BC /* Pods_VicTmdb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5583D2ED169D2ADFB59FF9A /* Pods_VicTmdbTests.framework in Frameworks */,
+				424E7CC95BD0A42F2B183656 /* Pods_VicTmdbTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,34 +144,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41F17AD2DD6A57E36CA21BB5 /* Pods_VicTmdbUITests.framework in Frameworks */,
+				F31C295D28DA3872B0DC21A6 /* Pods_VicTmdbUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		45AB6C5A8D0A5E04FB7D6A6F /* Frameworks */ = {
+		17C2397CCC485D790C2125A6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B8D5A3F5D59FCE3CDEEB1288 /* Pods_VicTmdb.framework */,
-				1C841BBE2950ECE8F25D4C3E /* Pods_VicTmdbTests.framework */,
-				159C669104C1B4403F7916EF /* Pods_VicTmdbUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		74AA9EBD78CC1FD8C322EB41 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3F15DCD08B4467B334320647 /* Pods-VicTmdb.debug.xcconfig */,
-				5D046881DE017820C4845045 /* Pods-VicTmdb.release.xcconfig */,
-				8C94E4DF94022233DFF142C0 /* Pods-VicTmdbTests.debug.xcconfig */,
-				21B52E47A0A2306BAF8DE62A /* Pods-VicTmdbTests.release.xcconfig */,
-				A6C865E80E949644F764B8AB /* Pods-VicTmdbUITests.debug.xcconfig */,
-				DB0DBAEC880184EC40537621 /* Pods-VicTmdbUITests.release.xcconfig */,
+				CE4BAC9FDDF191C67CCDC4F6 /* Pods-VicTmdb.debug.xcconfig */,
+				9965342D02D6A4CF2EB526E8 /* Pods-VicTmdb.release.xcconfig */,
+				CB80E91771332F22FEC24D32 /* Pods-VicTmdbTests.debug.xcconfig */,
+				B279BA65FCAF5A8D184FAA4E /* Pods-VicTmdbTests.release.xcconfig */,
+				855191EE37B3120CD80A2833 /* Pods-VicTmdbUITests.debug.xcconfig */,
+				02FB1EE02F8919B130F683FA /* Pods-VicTmdbUITests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		A0C255CE216F5C9E0056FCBC /* Helper */ = {
@@ -216,8 +207,8 @@
 				A0D1EEEE216A55F40049227A /* VicTmdbTests */,
 				A0D1EEF9216A55F50049227A /* VicTmdbUITests */,
 				A0D1EED6216A55F20049227A /* Products */,
-				74AA9EBD78CC1FD8C322EB41 /* Pods */,
-				45AB6C5A8D0A5E04FB7D6A6F /* Frameworks */,
+				17C2397CCC485D790C2125A6 /* Pods */,
+				E2D07D4EB3B78C33A690D300 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -353,6 +344,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E2D07D4EB3B78C33A690D300 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				906E7124FD93105E2B2E4459 /* Pods_VicTmdb.framework */,
+				6749E9B1CCA3D031A9AB8632 /* Pods_VicTmdbTests.framework */,
+				8E3AB02364FE4A7776B37D10 /* Pods_VicTmdbUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,11 +361,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0D1EEFF216A55F50049227A /* Build configuration list for PBXNativeTarget "VicTmdb" */;
 			buildPhases = (
-				A61336AA9E604747AE9D46AB /* [CP] Check Pods Manifest.lock */,
+				6E22E4BC7DE09A0CF3145FFD /* [CP] Check Pods Manifest.lock */,
 				A0D1EED1216A55F20049227A /* Sources */,
 				A0D1EED2216A55F20049227A /* Frameworks */,
 				A0D1EED3216A55F20049227A /* Resources */,
-				202B83F64A42B32EBBCEFF84 /* [CP] Embed Pods Frameworks */,
+				753ADBCDCDA07A8EAC64AE5E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -379,11 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0D1EF02216A55F50049227A /* Build configuration list for PBXNativeTarget "VicTmdbTests" */;
 			buildPhases = (
-				3D1891F4500440B4720F11F0 /* [CP] Check Pods Manifest.lock */,
+				21099C2B8B7688C7C573CC54 /* [CP] Check Pods Manifest.lock */,
 				A0D1EEE7216A55F40049227A /* Sources */,
 				A0D1EEE8216A55F40049227A /* Frameworks */,
 				A0D1EEE9216A55F40049227A /* Resources */,
-				E5F5BCBD629C3056C5BDBC41 /* [CP] Embed Pods Frameworks */,
+				20EF860DB9CFB2EBB0E78581 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,7 +400,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0D1EF05216A55F50049227A /* Build configuration list for PBXNativeTarget "VicTmdbUITests" */;
 			buildPhases = (
-				47D6156A52364DA7BE7233FE /* [CP] Check Pods Manifest.lock */,
+				FB07DAFC70DD08A48BBCE98F /* [CP] Check Pods Manifest.lock */,
 				A0D1EEF2216A55F50049227A /* Sources */,
 				A0D1EEF3216A55F50049227A /* Frameworks */,
 				A0D1EEF4216A55F50049227A /* Resources */,
@@ -489,45 +490,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		202B83F64A42B32EBBCEFF84 /* [CP] Embed Pods Frameworks */ = {
+		20EF860DB9CFB2EBB0E78581 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VicTmdb/Pods-VicTmdb-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D1891F4500440B4720F11F0 /* [CP] Check Pods Manifest.lock */ = {
+		21099C2B8B7688C7C573CC54 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -549,29 +529,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		47D6156A52364DA7BE7233FE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VicTmdbUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A61336AA9E604747AE9D46AB /* [CP] Check Pods Manifest.lock */ = {
+		6E22E4BC7DE09A0CF3145FFD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -593,7 +551,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5F5BCBD629C3056C5BDBC41 /* [CP] Embed Pods Frameworks */ = {
+		753ADBCDCDA07A8EAC64AE5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VicTmdb/Pods-VicTmdb-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VicTmdb/Pods-VicTmdb-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VicTmdb/Pods-VicTmdb-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB07DAFC70DD08A48BBCE98F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -601,24 +576,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+				"$(DERIVED_FILE_DIR)/Pods-VicTmdbUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VicTmdbTests/Pods-VicTmdbTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -715,7 +684,7 @@
 		A0D1EEFD216A55F50049227A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -771,13 +740,14 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		A0D1EEFE216A55F50049227A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -827,55 +797,60 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		A0D1EF00216A55F50049227A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F15DCD08B4467B334320647 /* Pods-VicTmdb.debug.xcconfig */;
+			baseConfigurationReference = CE4BAC9FDDF191C67CCDC4F6 /* Pods-VicTmdb.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WMZSSREEU;
 				INFOPLIST_FILE = VicTmdb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		A0D1EF01216A55F50049227A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D046881DE017820C4845045 /* Pods-VicTmdb.release.xcconfig */;
+			baseConfigurationReference = 9965342D02D6A4CF2EB526E8 /* Pods-VicTmdb.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WMZSSREEU;
 				INFOPLIST_FILE = VicTmdb/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		A0D1EF03216A55F50049227A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C94E4DF94022233DFF142C0 /* Pods-VicTmdbTests.debug.xcconfig */;
+			baseConfigurationReference = CB80E91771332F22FEC24D32 /* Pods-VicTmdbTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -889,7 +864,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdbTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VicTmdb.app/VicTmdb";
 			};
@@ -897,7 +872,7 @@
 		};
 		A0D1EF04216A55F50049227A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21B52E47A0A2306BAF8DE62A /* Pods-VicTmdbTests.release.xcconfig */;
+			baseConfigurationReference = B279BA65FCAF5A8D184FAA4E /* Pods-VicTmdbTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -911,7 +886,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdbTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VicTmdb.app/VicTmdb";
 			};
@@ -919,9 +894,9 @@
 		};
 		A0D1EF06216A55F50049227A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6C865E80E949644F764B8AB /* Pods-VicTmdbUITests.debug.xcconfig */;
+			baseConfigurationReference = 855191EE37B3120CD80A2833 /* Pods-VicTmdbUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WMZSSREEU;
 				INFOPLIST_FILE = VicTmdbUITests/Info.plist;
@@ -932,7 +907,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdbUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = VicTmdb;
 			};
@@ -940,9 +915,9 @@
 		};
 		A0D1EF07216A55F50049227A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB0DBAEC880184EC40537621 /* Pods-VicTmdbUITests.release.xcconfig */;
+			baseConfigurationReference = 02FB1EE02F8919B130F683FA /* Pods-VicTmdbUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WMZSSREEU;
 				INFOPLIST_FILE = VicTmdbUITests/Info.plist;
@@ -953,7 +928,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vic.VicTmdbUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = VicTmdb;
 			};

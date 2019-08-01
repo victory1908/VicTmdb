@@ -68,7 +68,7 @@ extension PopularMovieVC {
 extension PopularMovieVC {
     func bindRx() {
         collectionView.rx.reachedBottom
-            .throttle(2, scheduler: MainScheduler.instance)
+            .throttle(.seconds(2), scheduler: MainScheduler.instance)
             .asDriver(onErrorJustReturn: ())
             .drive(viewModel.loadMore)
             .disposed(by: disposeBag)

@@ -155,7 +155,7 @@ extension SearchMovieVC {
             .disposed(by: disposeBag)
         
         collectionView.rx.reachedBottom
-            .throttle(2, scheduler: scheduler)
+            .throttle(.seconds(2), scheduler: scheduler)
             .asDriver(onErrorJustReturn: ())
             .drive(viewModel.loadMore)
             .disposed(by: disposeBag)
